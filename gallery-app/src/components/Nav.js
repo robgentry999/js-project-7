@@ -1,18 +1,25 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-/**
- * The Main Nav for the Gallery 
- */
-const Nav = (props)=>{
-    return (
-        <nav className="main-nav">
-        <ul>
-          <li><NavLink to="/cats">Cats</NavLink></li>
-          <li><NavLink to="/dogs">Dogs</NavLink></li>
-          <li><NavLink to="/computers">Computers</NavLink></li>
-        </ul>
-      </nav>
-    );
-};
+import {
+    NavLink,
+    withRouter }
+from 'react-router-dom';
 
-export default Nav;
+
+const Nav = (props) => {
+
+    
+    return (
+        <div className="main-nav">
+            <ul>
+                <li><NavLink to="/search/dogs" onClick={props.navItem} id="dogs">Dogs</NavLink></li>
+                <li><NavLink to="/search/cats" onClick={props.navItem} id="cats">Cats</NavLink></li>
+                <li><NavLink to="/search/birds" onClick={props.navItem} id="birds">Birds</NavLink></li>
+            </ul>
+        </div>
+
+    );
+
+}
+
+//export default Nav;
+export default withRouter(Nav);
