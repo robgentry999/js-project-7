@@ -29,6 +29,16 @@ class App extends Component{
     componentDidMount(){
        this.performSearch();            
     }
+
+    componentDidUpdate(prevProps) {
+        //if props location name dosen't match previous prop location name, perform search on last prop
+
+        if (this.props.location.pathname !== prevProps.location.pathname) {         
+          const prevSearch =  this.props.location.pathname.split("/");
+          const addressBarState = prevSearch[2];
+          this.performSearch(addressBarState);          
+        }
+    }
     
       
     performSearch = (query = 'monkey') => {
